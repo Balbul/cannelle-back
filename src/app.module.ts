@@ -6,6 +6,8 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { PingModule } from './ping/ping.module';
 import { RecetteModule } from './recette/recette.module';
+import { UserModule } from './user/user.module';
+import { AuthModule } from './auth/auth.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -17,6 +19,8 @@ import configuration from './config/configuration';
     DateModule,
     RecetteModule,
     MongooseModule.forRoot(configuration().database.host),
+    UserModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

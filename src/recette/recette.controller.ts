@@ -1,8 +1,19 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+} from '@nestjs/common';
 import { RecetteService } from './recette.service';
 import { CreateRecetteDto } from './dto/create-recette.dto';
 import { UpdateRecetteDto } from './dto/update-recette.dto';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 
+@UseGuards(JwtAuthGuard)
 @Controller('recette')
 export class RecetteController {
   constructor(private readonly recetteService: RecetteService) {}

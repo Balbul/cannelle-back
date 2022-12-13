@@ -6,11 +6,14 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { DateService } from './date.service';
 import { CreateDateDto } from './dto/create-date.dto';
 import { UpdateDateDto } from './dto/update-date.dto';
 
+@UseGuards(JwtAuthGuard)
 @Controller('date')
 export class DateController {
   constructor(private readonly dateService: DateService) {}
